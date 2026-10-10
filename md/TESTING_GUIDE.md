@@ -11,44 +11,19 @@ This guide walks you through testing the complete workflow system with sample da
 - MySQL database with sample data loaded
 - Database: `report_tracking.sql` (includes 50 departments, sample users, and workflows)
 
-## 🔑 Login Credentials
+## Test Accounts
 
-### Admin Account
-
-```
-Email: admin@municipal.gov
-Password: admin123
-Role: admin
-```
-
-### Department Staff Accounts
-
-All department staff use:
-
-```
-Password: dept123
-```
-
-Examples:
-
-- `budget@municipal.gov` (Budget Director)
-- `accounting@municipal.gov` (Accountant)
-- `treasurer@municipal.gov` (Treasurer)
-- `health@municipal.gov` (Health Department)
-- etc.
-
-### Client Accounts
-
-```
-Email: client1@gmail.com or client2@gmail.com
-Password: client123
-```
+Use accounts created for your test environment. The database migration no
+longer seeds shared default credentials: provision the first administrator
+with `INITIAL_ADMIN_EMAIL` and `INITIAL_ADMIN_PASSWORD`, then create department
+staff from the administrator account. Register a client account through the
+application.
 
 ## 📋 Test Scenario 1: Complete Workflow with 3 Departments
 
 ### Step 1: Client Submits a Report
 
-1. Login to `http://localhost:3000` as **client1@gmail.com** (password: `client123`)
+1. Register and sign in to the application as a client.
 2. Go to **Dashboard** → **Submit Report** tab
 3. Fill in the form:
    - **Title**: "Budget Variance Analysis Request"
@@ -59,7 +34,7 @@ Password: client123
 
 ### Step 2: Admin Assigns Multi-Department Workflow
 
-1. Logout and login as **admin@municipal.gov** (password: `admin123`)
+1. Sign in to the administrator account for the test environment.
 2. Go to **Admin Dashboard**
 3. Click **Reports** tab
 4. Find the report you just created (or use Report ID 1 from sample data)
@@ -93,7 +68,7 @@ Expected Response:
 
 ### Step 3: First Department Reviews (Budget Office)
 
-1. Logout and login as **budget@municipal.gov** (password: `dept123`)
+1. Sign in to a Budget Office staff account created for the test environment.
 2. Go to **Department Dashboard**
 3. Click **⏳ Pending** tab
 4. You should see the report you just created
@@ -113,7 +88,7 @@ Expected Result:
 
 ### Step 4: Second Department Reviews (Accounting Office)
 
-1. Logout and login as **accounting@municipal.gov** (password: `dept123`)
+1. Sign in to an Accounting Office staff account created for the test environment.
 2. Go to **Department Dashboard**
 3. Click **⏳ Pending** tab
 4. You should now see the same report (was pending, now ready for us)
@@ -132,7 +107,7 @@ Expected Result:
 
 ### Step 5: Final Department Reviews (Treasurer)
 
-1. Logout and login as **treasurer@municipal.gov** (password: `dept123`)
+1. Sign in to a Treasurer Office staff account created for the test environment.
 2. Go to **Department Dashboard**
 3. Click **⏳ Pending** tab
 4. View workflow details
@@ -151,7 +126,7 @@ Expected Result:
 
 ### Step 6: Client Views Final Status
 
-1. Logout and login as **client1@gmail.com** (password: `client123`)
+1. Sign in to the client account registered in the test environment.
 2. Go to **My Reports Dashboard** → **Track Reports** tab OR **Completed** tab
 3. Report should show **100% complete**
 4. Click **View** button

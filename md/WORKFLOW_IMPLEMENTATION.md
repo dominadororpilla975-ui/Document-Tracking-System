@@ -239,11 +239,9 @@ System uses role-based access:
 - **Client** - Can submit reports and track progress
 - **Users** - Login with role-specific credentials
 
-Credentials in database:
-
-- Admin: `admin123` (dept123 for all dept staff)
-- Clients: `client123`
-- Department staff: auto-assigned dept codes
+Create accounts for each test role in the test environment. The migration
+requires deployment-provided first-administrator credentials and no longer
+seeds shared default passwords.
 
 ## 📈 Audit Trail
 

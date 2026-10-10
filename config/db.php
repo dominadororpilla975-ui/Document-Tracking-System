@@ -1,10 +1,9 @@
 <?php
-// Database configuration. Set these values in InfinityFree before uploading.
-define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
-define('DB_PORT', getenv('DB_PORT') ?: '3306');
-define('DB_USER', getenv('DB_USER') ?: 'root');
-define('DB_PASS', getenv('DB_PASS') ?: '');
-define('DB_NAME', getenv('DB_NAME') ?: 'document_tracking_system');
+define('DB_HOST', getenv('DB_HOST') ?: (getenv('MYSQLHOST') ?: 'localhost'));
+define('DB_PORT', getenv('DB_PORT') ?: (getenv('MYSQLPORT') ?: '3306'));
+define('DB_USER', getenv('DB_USER') ?: (getenv('MYSQLUSER') ?: 'root'));
+define('DB_PASS', getenv('DB_PASS') ?: (getenv('MYSQLPASSWORD') ?: ''));
+define('DB_NAME', getenv('DB_NAME') ?: (getenv('MYSQLDATABASE') ?: 'document_tracking_system'));
 
 try {
     $dsn = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8mb4";
@@ -14,5 +13,12 @@ try {
         PDO::ATTR_EMULATE_PREPARES => false,
     ]);
 } catch (PDOException $e) {
+    error_log('Database connection failed: ' . $e->getMessage());
+    http_response_code(503);
+
+    if (getenv('RAILWAY_ENVIRONMENT_NAME') !== false || getenv('APP_ENV') === 'production') {
+        die('Database temporarily unavailable. Please try again later.');
+    }
+
     die("Database Connection Error: " . $e->getMessage());
 }

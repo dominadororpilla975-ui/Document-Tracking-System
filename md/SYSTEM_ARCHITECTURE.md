@@ -355,24 +355,11 @@ Error:
 - Modal-based details (lazy loading)
 - Bootstrap components (lightweight)
 
-## Testing Credentials
+## Initial Administrator
 
-```
-Admin Account:
-Email: admin@example.com
-Password: admin123
-Role: admin
-
-Client Account:
-Email: juan@example.com
-Password: client123
-Role: client
-
-Department Account:
-Email: mayor@example.com
-Password: admin123
-Role: department
-```
+Provision the first administrator through deployment-only environment
+variables. See the [Railway deployment guide](RAILWAY_DEPLOYMENT.md). The
+migration does not create shared default passwords.
 
 ## Deployment Checklist
 

@@ -128,6 +128,6 @@ para sa account o sa buong system.
 
 ### 🔑 Test Accounts
 
-- **Admin**: `admin@municipal.gov` / `admin123`
-- **Department**: `mayor@municipal.gov` / `dept123`
-- **Client**: `juan@municipal-report.gov` / `client123`
+The database migration no longer creates accounts with shared default
+passwords. Follow the [Railway deployment guide](RAILWAY_DEPLOYMENT.md) to
+provision the first administrator with a unique password.

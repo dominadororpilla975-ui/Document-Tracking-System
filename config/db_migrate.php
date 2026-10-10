@@ -845,90 +845,36 @@ try {
                 LEFT JOIN service_workflow_steps sws ON sws.service_id = ds.id
                 WHERE sws.id IS NULL AND ds.status = 'Active'");
 
-    // 8. Seed default Accounts (Super Admin, Dept Admins) with email verification
-    $defaultUsers = [
-        [
-            'name' => 'Super Administrator',
-            'email' => 'superadmin@carranglan.gov.ph',
-            'password' => 'admin123',
-            'role' => 'super_admin',
-            'department_id' => null,
-            'email_verified' => 1,
-            'account_status' => 'active'
-        ],
-        [
-            'name' => 'Mayor Office Admin',
-            'email' => 'mayor@carranglan.gov.ph',
-            'password' => 'dept123',
-            'role' => 'department_admin',
-            'department_id' => $deptMap["Mayor's Office"] ?? null,
-            'email_verified' => 1,
-            'account_status' => 'active'
-        ],
-        [
-            'name' => 'Budget Office Admin',
-            'email' => 'budget@carranglan.gov.ph',
-            'password' => 'dept123',
-            'role' => 'department_admin',
-            'department_id' => $deptMap["Municipal Budget Office"] ?? null,
-            'email_verified' => 1,
-            'account_status' => 'active'
-        ],
-        [
-            'name' => 'Accounting Admin',
-            'email' => 'accounting@carranglan.gov.ph',
-            'password' => 'dept123',
-            'role' => 'department_admin',
-            'department_id' => $deptMap["Municipal Accounting Office"] ?? null,
-            'email_verified' => 1,
-            'account_status' => 'active'
-        ],
-        [
-            'name' => 'Treasurer Admin',
-            'email' => 'treasurer@carranglan.gov.ph',
-            'password' => 'dept123',
-            'role' => 'department_admin',
-            'department_id' => $deptMap["Office of the Municipal Treasurer"] ?? null,
-            'email_verified' => 1,
-            'account_status' => 'active'
-        ],
-        [
-            'name' => 'Engineering Admin',
-            'email' => 'engineering@carranglan.gov.ph',
-            'password' => 'dept123',
-            'role' => 'department_admin',
-            'department_id' => $deptMap["Municipal Engineering Office"] ?? null,
-            'email_verified' => 1,
-            'account_status' => 'active'
-        ],
-        [
-            'name' => 'BFP Department Admin',
-            'email' => 'bfp@carranglan.gov.ph',
-            'password' => 'dept123',
-            'role' => 'department_admin',
-            'department_id' => $deptMap["Bureau of Fire Protection"] ?? null,
-            'email_verified' => 1,
-            'account_status' => 'active'
-        ],
-    ];
+    // 8. Create the first administrator only with deployment-provided credentials.
+    $adminCount = (int) $pdo->query("SELECT COUNT(*) FROM users WHERE role = 'super_admin'")->fetchColumn();
+    if ($adminCount === 0) {
+        $adminEmail = trim((string) (getenv('INITIAL_ADMIN_EMAIL') ?: ''));
+        $adminPassword = (string) (getenv('INITIAL_ADMIN_PASSWORD') ?: '');
 
-    foreach ($defaultUsers as $u) {
-        $uCheck = $pdo->prepare("SELECT id FROM users WHERE email = :email");
-        $uCheck->execute(['email' => $u['email']]);
-        if (!$uCheck->fetchColumn()) {
-            $hashed = password_hash($u['password'], PASSWORD_BCRYPT);
-            $uIns = $pdo->prepare(
-                "INSERT INTO users (name, email, password, role, department_id, email_verified, account_status) 
-                 VALUES (:name, :email, :password, :role, :dept_id, :email_verified, :account_status)"
+        if (!filter_var($adminEmail, FILTER_VALIDATE_EMAIL) || strlen($adminPassword) < 16) {
+            throw new RuntimeException(
+                'Set INITIAL_ADMIN_EMAIL and INITIAL_ADMIN_PASSWORD (at least 16 characters) before initializing the first administrator.'
             );
-            $uIns->execute([
-                'name' => $u['name'],
-                'email' => $u['email'],
-                'password' => $hashed,
-                'role' => $u['role'],
-                'dept_id' => $u['department_id'],
-                'email_verified' => $u['email_verified'],
-                'account_status' => $u['account_status']
+        }
+
+        $existingAdmin = $pdo->prepare('SELECT role FROM users WHERE email = :email LIMIT 1');
+        $existingAdmin->execute(['email' => $adminEmail]);
+        $existingRole = $existingAdmin->fetchColumn();
+        if ($existingRole !== false && $existingRole !== 'super_admin') {
+            throw new RuntimeException(
+                'INITIAL_ADMIN_EMAIL is already assigned to a non-administrator account.'
+            );
+        }
+
+        if ($existingRole === false) {
+            $createAdmin = $pdo->prepare(
+                "INSERT INTO users (name, email, password, role, department_id, email_verified, account_status)
+                 VALUES (:name, :email, :password, 'super_admin', NULL, 1, 'active')"
+            );
+            $createAdmin->execute([
+                'name' => 'System Administrator',
+                'email' => $adminEmail,
+                'password' => password_hash($adminPassword, PASSWORD_DEFAULT),
             ]);
         }
     }

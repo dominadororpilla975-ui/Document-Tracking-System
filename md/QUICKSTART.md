@@ -136,29 +136,21 @@ report-tracking-system/
 
 ## 🎯 First-Time Testing
 
-### Overview of Credentials
-
-| Role            | Email                    | Password  |
-| --------------- | ------------------------ | --------- |
-| Admin           | admin@municipal.gov      | admin123  |
-| Budget Director | budget@municipal.gov     | dept123   |
-| Accountant      | accounting@municipal.gov | dept123   |
-| Treasurer       | treasurer@municipal.gov  | dept123   |
-| Client 1        | client1@gmail.com        | client123 |
-| Client 2        | client2@gmail.com        | client123 |
-
-(18 department staff accounts total - see database/report_tracking.sql)
+The database migration creates the first administrator only when
+`INITIAL_ADMIN_EMAIL` and a unique `INITIAL_ADMIN_PASSWORD` (at least 16
+characters) are supplied by the deployment environment. It does not create
+accounts with shared default passwords. Create department staff from the
+administrator account and register client accounts through the application.
 
 ### Test Flow: 3-Department Workflow
 
 1. **Client Submits Report**
-   - Open `http://localhost:3000`
-   - Login: `client1@gmail.com` / `client123`
-   - Go to Dashboard → Submit tab
-   - Fill form and submit → Note Report ID
+   - Register a client account and sign in.
+   - Go to Dashboard → Submit tab.
+   - Fill the form and submit, then note the report ID.
 
 2. **Admin Assigns Workflow**
-   - Logout and login as Admin: `admin@municipal.gov` / `admin123`
+   - Sign in to the administrator account provisioned during setup.
    - Go to Admin Dashboard → Reports
    - Find your report and view details
    - Use API to create workflow (see TESTING_GUIDE.md)
@@ -170,17 +162,17 @@ report-tracking-system/
    ```
 
 3. **Department Reviews Workflow**
-   - Logout and login as: `budget@municipal.gov` / `dept123`
+   - Sign in to the department staff account created by the administrator.
    - Go to Department Dashboard → Pending tab
    - Click report to view WorkflowTracker
    - Click **✓ Approve** to advance
 
 4. **Next Department Reviews**
-   - Logout and login as: `accounting@municipal.gov` / `dept123`
+   - Sign in to the next department staff account.
    - Same process - approve to advance
 
 5. **Final Department Completes**
-   - Logout and login as: `treasurer@municipal.gov` / `dept123`
+   - Sign in to the final department staff account.
    - Approve final step
    - Report marked as "Completed"
 
