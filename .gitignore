@@ -10,7 +10,6 @@
 # Database exports and runtime data
 /backups/
 /database/*.sql
-!/database/Document_tracking.sql
 /email_logs.txt
 /uploads/
 /image/uploads/

@@ -129,5 +129,6 @@ para sa account o sa buong system.
 ### 🔑 Test Accounts
 
 The database migration no longer creates accounts with shared default
-passwords. Follow the [Railway deployment guide](RAILWAY_DEPLOYMENT.md) to
-provision the first administrator with a unique password.
+passwords. Before running `php config/db_migrate.php` on a new database, set
+`INITIAL_ADMIN_EMAIL` and a unique `INITIAL_ADMIN_PASSWORD` of at least 16
+characters in the server environment.

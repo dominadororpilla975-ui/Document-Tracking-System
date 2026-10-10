@@ -357,9 +357,10 @@ Error:
 
 ## Initial Administrator
 
-Provision the first administrator through deployment-only environment
-variables. See the [Railway deployment guide](RAILWAY_DEPLOYMENT.md). The
-migration does not create shared default passwords.
+Before running `php config/db_migrate.php` on a new database, set
+`INITIAL_ADMIN_EMAIL` and a unique `INITIAL_ADMIN_PASSWORD` of at least 16
+characters in the server environment. The migration does not create shared
+default passwords.
 
 ## Deployment Checklist
 
