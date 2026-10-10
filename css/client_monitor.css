@@ -1,0 +1,16 @@
+/* ==========================================================================
+   CLIENT MONITOR PAGE STYLES (client_monitor.php)
+   ========================================================================== */
+
+.client-monitor-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.client-monitor-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  padding: 1.75rem;
+}

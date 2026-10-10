@@ -1,0 +1,18 @@
+# Dependencies
+/node_modules/
+
+# Local credentials
+/.env
+/.env.*
+!/config/mail.local.php.example
+/config/*.local.php
+
+# Database exports and runtime data
+/backups/
+/database/*.sql
+/email_logs.txt
+/uploads/
+/image/uploads/
+
+# Local editor settings
+/.vscode/

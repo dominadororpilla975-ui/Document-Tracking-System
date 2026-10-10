@@ -1,0 +1,25 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^favicon\.ico$ favicon.svg [R=302,L]
+    RewriteRule ^$ app/route.php [END]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} \.php$ [NC]
+    RewriteRule ^ app/route.php [END]
+</IfModule>
+
+<FilesMatch "^(\.env|\.user\.ini|.*\.sql|email_logs\.txt)$">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_alias.c>
+    RedirectMatch 403 ^/config/
+    RedirectMatch 403 ^/database/
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

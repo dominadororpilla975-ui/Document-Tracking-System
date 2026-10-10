@@ -1,0 +1,46 @@
+/* ==========================================================================
+   MANAGE USERS PAGE STYLES (manage_users.php)
+   ========================================================================== */
+
+.users-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.users-header-title h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+.users-section-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.user-role-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.user-role-badge.super_admin { background: #fee2e2; color: #991b1b; }
+.user-role-badge.department_admin { background: #dbeafe; color: #1e40af; }
+.user-role-badge.department_staff { background: #fef3c7; color: #92400e; }
+.user-role-badge.client { background: #f3e8ff; color: #6b21a8; }
+
+.status-badge-active { background: #dcfce7; color: #15803d; }
+.status-badge-pending { background: #fef3c7; color: #b45309; }
+.status-badge-disabled { background: #f1f5f9; color: #64748b; }

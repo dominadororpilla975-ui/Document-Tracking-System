@@ -1,0 +1,18 @@
+STATEMENT OF THE PROBLEM
+Web-Based Report Tracking System
+
+Before the implementation of the Report Tracking System, the handling of reports may rely on separate records and manual follow-ups. This can make it difficult for clients to know the current status of a submitted report, for administrators to identify and assign it to the responsible department, and for department personnel to coordinate updates through completion. When report information and actions are not recorded in one traceable process, delays, duplicated follow-ups, unclear responsibility, and difficulty reviewing past decisions may occur.
+
+The Document Tracking System addresses these concerns through a centralized web-based process for submitting and tracking reports, assigning reports to departments, recording workflow updates and decisions, and maintaining report history. Its role-based access controls provide users with functions appropriate to their assigned roles, while the audit trail supports review of actions taken on each report.
+
+General Problem
+
+The general problem addressed by this system is the difficulty of managing and monitoring reports in a coordinated, transparent, and accountable manner from submission through departmental processing and final disposition.
+
+Specifically, the system is designed to address the following problems:
+
+1. How can reports be submitted and kept in a centralized system so that report information can be managed consistently instead of relying on scattered records and manual follow-ups?
+2. How can a report be assigned to the responsible department and its processing status, actions, and decisions be recorded as it moves through the workflow?
+3. How can clients check the progress of their own reports without needing to repeatedly contact the office for status updates?
+4. How can the system ensure that clients, administrators, department administrators, and department staff access only the pages and actions permitted by their assigned roles and permissions?
+5. How can report assignments, status changes, remarks, and other significant actions be retained in a history that supports accountability and follow-up?

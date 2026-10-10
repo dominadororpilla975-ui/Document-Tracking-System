@@ -1,0 +1,233 @@
+/* ==========================================================================
+   SUBMIT REPORT PAGE STYLES (submit_report.php)
+   ========================================================================== */
+
+.submit-report-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  padding: 2rem;
+}
+
+.submit-report-card h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.submit-report-card p.subtitle {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-bottom: 1.75rem;
+}
+
+.upload-dropzone {
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  background: #f8fafc;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.upload-dropzone:hover {
+  border-color: var(--primary);
+  background: #eff6ff;
+}
+
+.upload-dropzone-icon {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.client-submission-shell {
+  width: min(100%, 1400px);
+  margin: 0 auto;
+}
+
+.full-width-submission {
+  width: 100%;
+  max-width: none;
+}
+
+.full-width-submission .client-submission-card {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.client-submission-header {
+  margin-bottom: 1.25rem;
+}
+
+.client-submission-header h1 {
+  margin: 0 0 0.35rem;
+  color: #0f172a;
+  font-size: clamp(1.55rem, 3vw, 2.15rem);
+  line-height: 1.15;
+}
+
+.client-submission-header p {
+  margin: 0;
+  color: #64748b;
+  max-width: 650px;
+  line-height: 1.55;
+}
+
+.client-submission-card {
+  padding: clamp(1rem, 3vw, 2rem);
+  border-radius: 16px;
+}
+
+.client-submission-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.client-form-section {
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.client-account-summary {
+  background: #f8fafc;
+}
+
+.client-routing-panel {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+}
+
+.client-request-section {
+  padding-bottom: 0.25rem;
+}
+
+.client-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.9rem;
+}
+
+.client-section-heading strong,
+.client-section-heading small {
+  display: block;
+}
+
+.client-section-heading strong {
+  color: #0f172a;
+  font-size: 0.98rem;
+}
+
+.client-section-heading small {
+  margin-top: 0.15rem;
+  color: #64748b;
+  font-size: 0.78rem;
+}
+
+.client-section-number {
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 30px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.client-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.full-width-submission .client-form-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.client-form-grid .form-group {
+  margin-bottom: 0;
+}
+
+.client-routing-panel .form-control {
+  background: #fff;
+}
+
+.client-submission-form .form-group {
+  margin-bottom: 0.9rem;
+}
+
+.client-submission-form label {
+  color: #334155;
+  font-weight: 700;
+}
+
+.client-submission-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 0.25rem;
+}
+
+.client-submit-action-button {
+  min-height: 44px;
+  min-width: 110px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.client-submission-actions .client-submit-action-button.btn-secondary {
+  border-color: #334155;
+  background: #334155;
+  color: #fff;
+}
+
+.client-submission-actions .client-submit-action-button.btn-secondary:hover,
+.client-submission-actions .client-submit-action-button.btn-secondary:focus-visible {
+  border-color: #0f172a;
+  background: #0f172a;
+  color: #fff;
+}
+
+.client-submit-button {
+  min-height: 44px;
+  padding-inline: 1.1rem;
+}
+
+.client-submit-button span {
+  margin-left: 0.35rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 640px) {
+  .client-form-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .client-submission-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .client-submission-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

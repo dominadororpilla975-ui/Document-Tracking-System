@@ -1,0 +1,165 @@
+/* Announcements page responsive layout */
+.announcements-page {
+  width: 100%;
+  max-width: none;
+}
+
+.announcement-table-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.announcement-data-table {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.announcement-data-table td {
+  vertical-align: middle;
+  overflow-wrap: anywhere;
+}
+
+.announcement-data-table td:nth-child(3) {
+  max-width: 360px;
+  color: #475569;
+}
+
+.announcement-action-menu .action-menu-panel form {
+  margin: 0;
+}
+
+.announcements-page > * {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.announcement-form-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(180px, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.announcement-form-grid > div,
+.announcements-page form > div {
+  min-width: 0;
+}
+
+.announcement-category-control {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.announcement-category-control select {
+  flex: 1;
+  min-width: 0;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 0.92rem;
+}
+
+.announcement-add-category-button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 38px;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #334155;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.announcement-add-category-button:hover {
+  background: #f1f5f9;
+}
+
+.announcement-category-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.55);
+}
+
+.announcement-category-modal-card {
+  width: min(420px, 100%);
+  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.2);
+}
+
+.announcement-category-modal-card h3 {
+  margin: 0 0 1rem;
+  color: #0f172a;
+  font-size: 1.1rem;
+}
+
+.announcement-category-modal-card label {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: #334155;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.announcement-category-modal-card input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+}
+
+.announcement-category-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.announcement-form-grid input,
+.announcement-form-grid select,
+.announcements-page textarea {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.announcement-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.announcement-item {
+  width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+  .announcements-page {
+    padding: 1rem;
+  }
+
+  .announcement-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .announcement-item {
+    padding: 1rem !important;
+  }
+}

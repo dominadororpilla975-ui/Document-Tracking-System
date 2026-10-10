@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "dompurify": "^3.4.16",
+    "jszip": "^3.10.2",
+    "mammoth": "^1.13.0"
+  }
+}

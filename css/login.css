@@ -1,0 +1,39 @@
+/* ==========================================================================
+   LOGIN PAGE STYLES (login.php)
+   ========================================================================== */
+
+.auth-body {
+  background: linear-gradient(135deg, #0b192c 0%, #1e293b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1.5rem;
+}
+
+.auth-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 18px;
+  padding: 2.25rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.auth-header h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 0.4rem;
+}
+
+.auth-header p {
+  color: #64748b;
+  font-size: 0.88rem;
+  margin: 0;
+}

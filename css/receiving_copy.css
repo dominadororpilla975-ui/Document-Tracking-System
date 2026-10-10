@@ -1,0 +1,41 @@
+/* ==========================================================================
+   RECEIVING COPY SLIP STYLES (receiving_copy.php)
+   ========================================================================== */
+
+.receiving-copy-slip {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 2rem;
+  font-family: inherit;
+}
+
+.receiving-header {
+  text-align: center;
+  border-bottom: 2px solid #0f172a;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.receiving-header h2 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+  }
+  .sidebar, .top-header {
+    display: none !important;
+  }
+  .receiving-copy-slip {
+    border: none !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+}

@@ -1,0 +1,13 @@
+<?php
+
+return [
+    'smtp_host' => 'smtp.gmail.com',
+    'smtp_auth' => true,
+    'smtp_user' => 'your-sender@gmail.com',
+    'smtp_pass' => 'your-16-character-google-app-password',
+    'smtp_secure' => 'tls',
+    'smtp_port' => 587,
+    'from_email' => 'your-sender@gmail.com',
+    'from_name' => 'Carranglan Document Tracking System',
+    'developer_mode' => false,
+];

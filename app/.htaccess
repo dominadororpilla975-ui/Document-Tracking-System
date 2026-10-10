@@ -1,0 +1,5 @@
+Require all denied
+
+<Files "route.php">
+Require all granted
+</Files>
